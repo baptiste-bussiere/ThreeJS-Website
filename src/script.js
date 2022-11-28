@@ -7,6 +7,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 /**  ANIMATION JAVASCRIPT HTML **/
 let cur = document.getElementById("cur");
+let expo_1 = document.getElementById("expo_1");
+
 gsap.to(".translate", {
     translateY: 0,
     delay: 0.5,
@@ -31,22 +33,21 @@ window.addEventListener('mouseup', (event) => {
 })
 
 window.addEventListener('mousemove', (event) => {
-    cursor.x = event.clientX / sizes.width - 0.5
-    cursor.y = event.clientY / sizes.height - 0.5
+    cursor.x = event.clientX - innerWidth
+    cursor.y = event.clientY
 
-    cur.style.transform = `translate(${cursor.x- 15}px, ${cursor.y-15}px)`
 
 })
 
-cur.addEventListener('mouseover', (cur) => {
-    gsap.to(".translate", {
-        translateY: cuursor.y,
-        delay: 0.5,
-        duration: 2.5,
-        ease: "expo.out"
+expo_1.addEventListener('mouseover', () => {
+    console.log('coucou')
 
+    gsap.to(cur, {
+        opacity: 1,
+        translateX: cursor.x,
+        translateY: cursor.y
     })
-
+    console.log(gsap)
 })
 
 
