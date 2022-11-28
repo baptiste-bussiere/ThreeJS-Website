@@ -1,12 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?&family=Syne:wght@400;500;600;700;800&display=swap&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 * {
     margin: 0;
     padding: 0;
+    cursor: none;
 }
 
-body {
+body,
+html {
     padding: 0;
     margin: 0;
+    overflow: hidden;
 }
 
 ::selection {
@@ -81,9 +85,9 @@ main {
                     color: #fff;
                     font-weight: 600;
                     font-size: 1.5em;
-                    span {
-                        font-size: 1em;
-                        text-decoration: underline;
+                    transition: 250ms;
+                    &:hover {
+                        color: blue;
                     }
                     transform: translateY(150px);
                 }
@@ -117,10 +121,73 @@ main {
                     }
                 }
             }
+            &:nth-child(4) {
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+                background-color: #F55D3E;
+                .overflow {
+                    display: flex;
+                    flex-direction: column;
+                    a {
+                        color: #fff;
+                        transition: 250ms;
+                        font-family: 'Syne', sans-serif;
+                        font-weight: 800;
+                        font-size: 2.5em;
+                        &:hover {
+                            color: blue;
+                        }
+                    }
+                }
+            }
+            &:nth-child(5) {
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+                .overflow {
+                    display: flex;
+                    flex-direction: column;
+                    p {
+                        font-family: 'Syne', sans-serif;
+                        font-weight: 600;
+                        margin: 1em 0;
+                        font-size: 2em;
+                    }
+                    .links {
+                        a {
+                            color: #000;
+                            transition: 250ms;
+                            font-family: 'Syne', sans-serif;
+                            font-weight: 800;
+                            font-size: 1em;
+                            &:hover {
+                                color: blue;
+                            }
+                        }
+                    }
+                }
+            }
+            &:nth-child(6) {
+                background-color: #000;
+                height: 30vh;
+                align-items: flex-end;
+                justify-content: flex-end;
+                margin: 0;
+                .overflow {
+                    margin: 0;
+                    h1 {
+                        margin: 0;
+                        color: #fff;
+                    }
+                }
+            }
             .overflow {
                 overflow: hidden;
                 h1 {
-                    font-family: 'Syne', sans-serif;
+                    font-family: 'Playfair Display', serif;
                     font-weight: 800;
                     font-size: 4em;
                     transform: translateY(calc(100% + 50px));
@@ -132,4 +199,14 @@ main {
 
 .material-symbols-outlined {
     font-variation-settings: 'FILL' 0, 'wght' 700, 'GRAD' 0, 'opsz' 48
+}
+
+#curseur {
+    position: absolute;
+    pointer-events: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 10em;
+    border: 2px blue solid;
+    opacity: 1;
 }

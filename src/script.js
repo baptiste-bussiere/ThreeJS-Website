@@ -117,6 +117,7 @@ cur8.addEventListener('mouseout', (event) => {
     })
 })
 
+
 window.addEventListener('mousemove', (event) => {
     cursor.x = event.clientX - innerWidth
     cursor.y = event.clientY
@@ -128,6 +129,8 @@ window.addEventListener('mousemove', (event) => {
     point6.style.transform = `translate(${cursor.x}px, ${cursor.y}px)`
     point7.style.transform = `translate(${cursor.x}px, ${cursor.y}px)`
     point8.style.transform = `translate(${cursor.x}px, ${cursor.y}px)`
+    curseur.style.transform = `translate(${cursor.x +9 }px, ${cursor.y- 9}px)`
+
 
 
 })
