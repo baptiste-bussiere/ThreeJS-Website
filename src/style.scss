@@ -72,11 +72,41 @@ main {
                 .scroll_text {
                     color: #fff;
                     font-weight: 600;
+                    font-size: 1.5em;
                     span {
                         font-size: 1em;
                         text-decoration: underline;
                     }
                     transform: translateY(150px);
+                }
+            }
+            &:nth-child(3) {
+                align-items: center;
+                flex-direction: column;
+                h1 {
+                    margin: 2em 0;
+                    color: rgb(245, 93, 62);
+                }
+                .tabl {
+                    width: 100%;
+                    .tabl_row {
+                        display: flex;
+                        cursor: pointer;
+                        .row {
+                            font-family: 'Syne', sans-serif;
+                            font-weight: 400;
+                            display: flex;
+                            font-size: 1.2em;
+                            justify-content: center;
+                            width: 100%;
+                        }
+                        .underline {
+                            text-decoration: underline;
+                        }
+                        &:hover {
+                            color: blue;
+                        }
+                    }
                 }
             }
             .overflow {
