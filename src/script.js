@@ -3,6 +3,30 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from 'lil-gui'
 import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+/**  ANIMATION JAVASCRIPT HTML **/
+
+
+gsap.to(".translate", {
+    translateY: 0,
+    delay: 0.5,
+    duration: 2.5,
+    ease: "expo.out"
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
 
 /**
  * Base
@@ -25,10 +49,10 @@ const scene = new THREE.Scene()
  * Test cube
  */
 const cube = new THREE.Mesh(
-        new THREE.BoxGeometry(1, 1, 1),
-        new THREE.MeshBasicMaterial({wireframe: true})
-    )
-    scene.add(cube)
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshBasicMaterial({ wireframe: true })
+)
+scene.add(cube)
 
 
 
@@ -41,13 +65,13 @@ const cube = new THREE.Mesh(
  */
 const sizes = {
     width: window.innerWidth / 2,
-    height: window.innerHeight 
+    height: window.innerHeight
 }
 
 window.addEventListener('resize', () => {
     // Update sizes
     sizes.width = window.innerWidth / 2
-    sizes.height = window.innerHeight 
+    sizes.height = window.innerHeight
 
     // Update camera
     camera.aspect = sizes.width / sizes.height
@@ -88,8 +112,8 @@ const clock = new THREE.Clock()
 
 const tick = () => {
     const elapsedTime = clock.getElapsedTime()
-
-    // Update controls
+    cube.rotation.y = elapsedTime * 0.2
+        // Update controls
     controls.update()
 
     // Render
