@@ -6,8 +6,6 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 /**  ANIMATION JAVASCRIPT HTML **/
-let cur = document.getElementById("cur");
-let expo_1 = document.getElementById("expo_1");
 
 gsap.to(".translate", {
     translateY: 0,
@@ -22,33 +20,132 @@ const cursor = {
     y: 0
 }
 
-window.addEventListener('mousedown', (event) => {
+cur1.addEventListener('mouseover', (event) => {
 
+    gsap.to(point1, {
+        opacity: 1,
+    })
 })
 
+cur1.addEventListener('mouseout', (event) => {
+    gsap.to(point1, {
+        opacity: 0,
+    })
+})
+cur2.addEventListener('mouseover', (event) => {
 
+    gsap.to(point2, {
+        opacity: 1,
+    })
+})
 
-window.addEventListener('mouseup', (event) => {
+cur2.addEventListener('mouseout', (event) => {
+    gsap.to(point2, {
+        opacity: 0,
+    })
+})
+cur3.addEventListener('mouseover', (event) => {
 
+    gsap.to(point3, {
+        opacity: 1,
+    })
+})
+
+cur3.addEventListener('mouseout', (event) => {
+    gsap.to(point3, {
+        opacity: 0,
+    })
+})
+cur4.addEventListener('mouseover', (event) => {
+
+    gsap.to(point4, {
+        opacity: 1,
+    })
+})
+
+cur4.addEventListener('mouseout', (event) => {
+    gsap.to(point4, {
+        opacity: 0,
+    })
+})
+cur5.addEventListener('mouseover', (event) => {
+
+    gsap.to(point5, {
+        opacity: 1,
+    })
+})
+
+cur5.addEventListener('mouseout', (event) => {
+    gsap.to(point5, {
+        opacity: 0,
+    })
+})
+cur6.addEventListener('mouseover', (event) => {
+
+    gsap.to(point6, {
+        opacity: 1,
+    })
+})
+
+cur6.addEventListener('mouseout', (event) => {
+    gsap.to(point6, {
+        opacity: 0,
+    })
+})
+cur7.addEventListener('mouseover', (event) => {
+
+    gsap.to(point7, {
+        opacity: 1,
+    })
+})
+
+cur7.addEventListener('mouseout', (event) => {
+    gsap.to(point7, {
+        opacity: 0,
+    })
+})
+cur8.addEventListener('mouseover', (event) => {
+
+    gsap.to(point8, {
+        opacity: 1,
+    })
+})
+
+cur8.addEventListener('mouseout', (event) => {
+    gsap.to(point8, {
+        opacity: 0,
+    })
 })
 
 window.addEventListener('mousemove', (event) => {
     cursor.x = event.clientX - innerWidth
     cursor.y = event.clientY
+    point1.style.transform = `translate(${cursor.x}px, ${cursor.y}px)`
+    point2.style.transform = `translate(${cursor.x}px, ${cursor.y}px)`
+    point3.style.transform = `translate(${cursor.x}px, ${cursor.y}px)`
+    point4.style.transform = `translate(${cursor.x}px, ${cursor.y}px)`
+    point5.style.transform = `translate(${cursor.x}px, ${cursor.y}px)`
+    point6.style.transform = `translate(${cursor.x}px, ${cursor.y}px)`
+    point7.style.transform = `translate(${cursor.x}px, ${cursor.y}px)`
+    point8.style.transform = `translate(${cursor.x}px, ${cursor.y}px)`
 
 
 })
 
-expo_1.addEventListener('mouseover', () => {
-    console.log('coucou')
 
-    gsap.to(cur, {
-        opacity: 1,
-        translateX: cursor.x,
-        translateY: cursor.y
-    })
-    console.log(gsap)
-})
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
