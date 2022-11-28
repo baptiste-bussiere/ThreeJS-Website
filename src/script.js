@@ -6,8 +6,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 /**  ANIMATION JAVASCRIPT HTML **/
-
-
+let cur = document.getElementById("cur");
 gsap.to(".translate", {
     translateY: 0,
     delay: 0.5,
@@ -16,6 +15,39 @@ gsap.to(".translate", {
 
 })
 
+const cursor = {
+    x: 0,
+    y: 0
+}
+
+window.addEventListener('mousedown', (event) => {
+
+})
+
+
+
+window.addEventListener('mouseup', (event) => {
+
+})
+
+window.addEventListener('mousemove', (event) => {
+    cursor.x = event.clientX / sizes.width - 0.5
+    cursor.y = event.clientY / sizes.height - 0.5
+
+    cur.style.transform = `translate(${cursor.x- 15}px, ${cursor.y-15}px)`
+
+})
+
+cur.addEventListener('mouseover', (cur) => {
+    gsap.to(".translate", {
+        translateY: cuursor.y,
+        delay: 0.5,
+        duration: 2.5,
+        ease: "expo.out"
+
+    })
+
+})
 
 
 
@@ -113,7 +145,11 @@ const clock = new THREE.Clock()
 const tick = () => {
     const elapsedTime = clock.getElapsedTime()
     cube.rotation.y = elapsedTime * 0.2
-        // Update controls
+
+
+
+
+    // Update controls
     controls.update()
 
     // Render

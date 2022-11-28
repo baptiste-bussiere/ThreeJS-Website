@@ -22,6 +22,12 @@ main {
     flex-direction: row-reverse;
     overflow: hidden;
     height: 100vh;
+    .cursor {
+        position: absolute;
+        height: 100px;
+        width: 100px;
+        background-color: red;
+    }
     .canvas {
         position: relative;
         display: flex;
