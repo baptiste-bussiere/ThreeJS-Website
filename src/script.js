@@ -21,6 +21,9 @@ const cursor = {
     y: 0
 }
 
+
+
+
 cur1.addEventListener('mouseover', (event) => {
 
     gsap.to(point1, {
@@ -173,15 +176,17 @@ const scene = new THREE.Scene()
 const gltfLoader = new GLTFLoader()
 
 
+var model;
 
-gltfLoader.load('/models/ghost.glb', (masque) => {
+gltfLoader.load('/models/ghost.glb', function(gltf) {
 
-    abc = masque
-    masque.scene.position.set(0, 0, 0)
-    scene.add(masque.scene)
+    model = gltf.scene;
+    model.position.set(0, 0, 0)
+    scene.add(model);
 
+});
+console.log(model)
 
-})
 
 
 
@@ -219,6 +224,27 @@ const sizes = {
     height: window.innerHeight
 }
 
+
+
+
+banner.addEventListener('click', (event) => {
+
+    gsap.to(sizes, {
+        width: window.innerWidth / 1,
+    })
+    console.log(sizes.width)
+
+
+    window.addEventListener('resize', () => {
+        // Update sizes
+        sizes.width = sizes.width
+        sizes.height = window.innerHeight
+
+
+    })
+})
+
+
 window.addEventListener('resize', () => {
     // Update sizes
     sizes.width = window.innerWidth / 2
@@ -241,10 +267,6 @@ const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 
 camera.position.set(0, 0, 1)
 scene.add(camera)
 
-// Controls
-// const controls = new OrbitControls(camera, canvas)
-// controls.target.set(0, 0.75, 0)
-// controls.enableDamping = true
 
 /**
  * Renderer
@@ -266,6 +288,16 @@ const tick = () => {
     const elapsedTime = clock.getElapsedTime()
 
 
+    if (model) {
+
+        gsap.to(model.rotation, {
+            x: cursor.y / sizes.height - 0.5,
+            y: cursor.x / sizes.width + 0.5,
+
+        })
+
+
+    }
 
 
     // Update controls
@@ -273,8 +305,13 @@ const tick = () => {
 
     // Render
     renderer.render(scene, camera)
+    camera.aspect = sizes.width / sizes.height
+    camera.updateProjectionMatrix()
 
-    // Call tick again on the next frame
+    // Update renderer
+    renderer.setSize(sizes.width, sizes.height)
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+        // Call tick again on the next frame
     window.requestAnimationFrame(tick)
 }
 

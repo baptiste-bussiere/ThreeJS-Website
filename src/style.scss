@@ -58,6 +58,15 @@ main {
                 right: 0;
             }
         }
+        .banner {
+            background-color: #fff;
+            position: absolute;
+            font-family: 'syne', serif;
+            padding: 1em;
+            top: 4em;
+            right: 0;
+            font-weight: 800;
+        }
     }
     .content {
         width: 100%;
