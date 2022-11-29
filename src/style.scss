@@ -44,12 +44,15 @@ main {
             display: flex;
             align-items: center;
             border-radius: 10em;
-            background-color: #b4b4b4;
+            background-color: transparent;
+            span {
+                color: #fff;
+                &:hover {
+                    color: #F55D3E;
+                }
+            }
             padding: 1em;
             transition: 250ms;
-            &:hover {
-                background-color: #b4b4b4be;
-            }
             top: 50%;
             &:nth-child(2) {
                 right: 0;

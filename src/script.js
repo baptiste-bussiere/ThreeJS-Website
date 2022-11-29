@@ -1,10 +1,10 @@
 import './style.scss'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import * as dat from 'lil-gui'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import * as dat from 'lil-gui'
+
 
 /**  ANIMATION JAVASCRIPT HTML **/
 
@@ -153,39 +153,11 @@ window.addEventListener('mousemove', (event) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /**
  * Base
  */
 // Debug
-// const gui = new dat.GUI()
-
-
-//galaxy 
-
-
+const gui = new dat.GUI()
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -194,17 +166,50 @@ const canvas = document.querySelector('canvas.webgl')
 const scene = new THREE.Scene()
 
 /**
- * Test cube
+ * Models
  */
-const cube = new THREE.Mesh(
-        new THREE.BoxGeometry(1, 1, 1),
-        new THREE.MeshBasicMaterial({ wireframe: true })
-    )
-    // scene.add(cube)
+
+
+const gltfLoader = new GLTFLoader()
+
+
+
+gltfLoader.load('/models/ghost.glb', (masque) => {
+
+    abc = masque
+    masque.scene.position.set(0, 0, 0)
+    scene.add(masque.scene)
+
+
+})
 
 
 
 
+
+
+
+/**
+ * Floor
+ */
+
+
+/**
+ * Lights
+ */
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.8)
+scene.add(ambientLight)
+
+const directionalLight = new THREE.DirectionalLight(0xffffff, 0.6)
+directionalLight.castShadow = true
+directionalLight.shadow.mapSize.set(1024, 1024)
+directionalLight.shadow.camera.far = 15
+directionalLight.shadow.camera.left = -7
+directionalLight.shadow.camera.top = 7
+directionalLight.shadow.camera.right = 7
+directionalLight.shadow.camera.bottom = -7
+directionalLight.position.set(-5, 5, 0)
+scene.add(directionalLight)
 
 /**
  * Sizes
@@ -233,14 +238,13 @@ window.addEventListener('resize', () => {
  */
 // Base camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
-camera.position.x = 3
-camera.position.y = 3
-camera.position.z = 3
+camera.position.set(0, 0, 1)
 scene.add(camera)
 
 // Controls
-const controls = new OrbitControls(camera, canvas)
-controls.enableDamping = true
+// const controls = new OrbitControls(camera, canvas)
+// controls.target.set(0, 0.75, 0)
+// controls.enableDamping = true
 
 /**
  * Renderer
@@ -248,17 +252,11 @@ controls.enableDamping = true
 const renderer = new THREE.WebGLRenderer({
     canvas: canvas
 })
+renderer.shadowMap.enabled = true
+renderer.shadowMap.type = THREE.PCFSoftShadowMap
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-var loader = new GLTFLoader();
 
-loader.load('/models/ghost.glb', function(gltf) {
-    const alfa = gltf.scene;
-    alfa.scale.set(2, 2, 2)
-
-    scene.add(alfa);
-    console.log(alfa.scale)
-});
 /**
  * Animate
  */
@@ -271,7 +269,7 @@ const tick = () => {
 
 
     // Update controls
-    controls.update()
+    // controls.update()
 
     // Render
     renderer.render(scene, camera)
