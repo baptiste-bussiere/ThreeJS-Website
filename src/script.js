@@ -1,6 +1,7 @@
 import './style.scss'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import * as dat from 'lil-gui'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -117,6 +118,20 @@ cur8.addEventListener('mouseout', (event) => {
     })
 })
 
+cur8.addEventListener('mouseover', (event) => {
+
+    gsap.to(point8, {
+        opacity: 1,
+    })
+})
+
+cur8.addEventListener('mouseout', (event) => {
+    gsap.to(point8, {
+        opacity: 0,
+    })
+})
+
+
 
 window.addEventListener('mousemove', (event) => {
     cursor.x = event.clientX - innerWidth
@@ -182,12 +197,10 @@ const scene = new THREE.Scene()
  * Test cube
  */
 const cube = new THREE.Mesh(
-    new THREE.BoxGeometry(1, 1, 1),
-    new THREE.MeshBasicMaterial({ wireframe: true })
-)
-scene.add(cube)
-
-
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshBasicMaterial({ wireframe: true })
+    )
+    // scene.add(cube)
 
 
 
@@ -237,7 +250,15 @@ const renderer = new THREE.WebGLRenderer({
 })
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+var loader = new GLTFLoader();
 
+loader.load('/models/ghost.glb', function(gltf) {
+    const alfa = gltf.scene;
+    alfa.scale.set(2, 2, 2)
+
+    scene.add(alfa);
+    console.log(alfa.scale)
+});
 /**
  * Animate
  */
@@ -245,7 +266,6 @@ const clock = new THREE.Clock()
 
 const tick = () => {
     const elapsedTime = clock.getElapsedTime()
-    cube.rotation.y = elapsedTime * 0.2
 
 
 

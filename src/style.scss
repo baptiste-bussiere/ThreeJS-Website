@@ -41,7 +41,6 @@ main {
             position: absolute;
             border: none;
             margin: 1em;
-            cursor: pointer;
             display: flex;
             align-items: center;
             border-radius: 10em;
@@ -103,7 +102,6 @@ main {
                     width: 100%;
                     .tabl_row {
                         display: flex;
-                        cursor: pointer;
                         .row {
                             font-family: 'Syne', sans-serif;
                             font-weight: 400;
