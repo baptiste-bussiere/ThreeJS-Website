@@ -3,7 +3,7 @@
 Réalisation d'une Galerie d'art en ThreeJS
 Utilisation de GSAP pour les transitions et de ThreeJS pour l'integration des modeles 3d.
 
-Retrouver le projet [ici](https://three-js-loader-k74rf50n9-baptiste-bussiere.vercel.app) ! 
+Retrouver le projet [ici](https://three-js-website-murex.vercel.app/) ! 
 
 [https://three-js-loader-k74rf50n9-baptiste-bussiere.vercel.app](https://three-js-website-murex.vercel.app/)
 
