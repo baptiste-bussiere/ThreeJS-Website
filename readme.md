@@ -1,4 +1,4 @@
-# THREE WEBSITE
+# THREE Galerie
 
 Réalisation d'une Galerie d'art en ThreeJS
 Utilisation de GSAP pour les transitions et de ThreeJS pour l'integration des modeles 3d.
