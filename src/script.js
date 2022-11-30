@@ -160,7 +160,7 @@ window.addEventListener('mousemove', (event) => {
  * Base
  */
 // Debug
-const gui = new dat.GUI()
+// const gui = new dat.GUI()
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -185,9 +185,6 @@ gltfLoader.load('/models/ghost.glb', function(gltf) {
     scene.add(model);
 
 });
-console.log(model)
-
-
 
 
 
@@ -220,41 +217,74 @@ scene.add(directionalLight)
  * Sizes
  */
 const sizes = {
-    width: window.innerWidth / 2,
+    width: window.innerWidth,
     height: window.innerHeight
 }
 
 
 
+let click;
+
 
 banner.addEventListener('click', (event) => {
-    gsap.to(webgl, {
-        keyframes: [{
-            width: window.innerWidth / 1,
-
-        }]
-    })
+    click = true
 
 
 
-
-
-    console.log(sizes.width)
-
-
-    window.addEventListener('resize', () => {
-        // Update sizes
-        sizes.width = sizes.width
-        sizes.height = window.innerHeight
-
-
-    })
 })
+
+cross.addEventListener('click', (event) => {
+    click = false
+
+
+
+
+})
+
+
+if (click) {
+    console.log('coucou')
+    sizes.width = window.innerWidth
+    gsap.to(sizes, {
+        width: sizes.width,
+    })
+    gsap.to(banner, {
+        display: "none",
+        opacity: 0
+    })
+    gsap.to(cross, {
+        display: "inherit",
+        opacity: 1,
+        delay: 1
+    })
+} else {
+
+    sizes.width = window.innerWidth / 2
+    gsap.to(sizes, {
+        width: sizes.width,
+
+    })
+    gsap.to(banner, {
+            display: "inherit",
+            opacity: 1,
+            delay: 1
+        })
+        // gsap.to(cross, {
+        //     display: "none",
+        //     opacity: 0
+
+
+    // })
+
+}
+
+
+
 
 
 window.addEventListener('resize', () => {
     // Update sizes
-    sizes.width = window.innerWidth / 2
+    sizes.width = sizes.width
     sizes.height = window.innerHeight
 
     // Update camera
@@ -306,10 +336,8 @@ const tick = () => {
 
     }
 
-
     // Update controls
     // controls.update()
-
     // Render
     renderer.render(scene, camera)
     camera.aspect = sizes.width / sizes.height

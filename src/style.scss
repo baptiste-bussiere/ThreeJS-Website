@@ -63,7 +63,7 @@ main {
             position: absolute;
             font-family: 'syne', serif;
             padding: 1em;
-            top: 4em;
+            top: 2em;
             right: 0;
             font-weight: 800;
         }
@@ -218,5 +218,12 @@ main {
     height: 15px;
     border-radius: 10em;
     border: 2px blue solid;
+    opacity: 1;
+}
+
+#cross {
+    display: inherit;
+    right: 2em;
+    top: 2em;
     opacity: 1;
 }
