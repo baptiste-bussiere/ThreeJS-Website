@@ -176,13 +176,42 @@ const scene = new THREE.Scene()
 const gltfLoader = new GLTFLoader()
 
 
-var model;
+var t1;
+var t2;
+var t3;
+var t4;
 
-gltfLoader.load('/models/ghost.glb', function(gltf) {
+gltfLoader.load('/models/toile-3.glb', function(gltf) {
 
-    model = gltf.scene;
-    model.position.set(0, 0, 0)
-    scene.add(model);
+    t1 = gltf.scene;
+    t1.position.set(0, 0, 0)
+    scene.add(t1);
+
+});
+
+gltfLoader.load('/models/toile-2.glb', function(gltf) {
+
+    t2 = gltf.scene;
+    t2.scale.set(0.0015, 0.0015, 0.0015)
+
+    t2.position.set(5, 5, 0)
+    scene.add(t2);
+
+});
+
+gltfLoader.load('/models/toile-1.glb', function(gltf) {
+
+    t3 = gltf.scene;
+    t3.position.set(10, 0, 0)
+    scene.add(t3);
+
+});
+gltfLoader.load('/models/toile-4.glb', function(gltf) {
+
+    t4 = gltf.scene;
+    t4.position.set(15, 0, 0)
+    t4.scale.set(0.06, 0.06, 0.06)
+    scene.add(t4);
 
 });
 
@@ -217,33 +246,17 @@ scene.add(directionalLight)
  * Sizes
  */
 const sizes = {
-    width: window.innerWidth,
+    width: window.innerWidth / 2,
     height: window.innerHeight
 }
 
 
 
-let click;
+let click = false;
+
 
 
 banner.addEventListener('click', (event) => {
-    click = true
-
-
-
-})
-
-cross.addEventListener('click', (event) => {
-    click = false
-
-
-
-
-})
-
-
-if (click) {
-    console.log('coucou')
     sizes.width = window.innerWidth
     gsap.to(sizes, {
         width: sizes.width,
@@ -257,51 +270,67 @@ if (click) {
         opacity: 1,
         delay: 1
     })
-} else {
-
-    sizes.width = window.innerWidth / 2
-    gsap.to(sizes, {
-        width: sizes.width,
-
-    })
-    gsap.to(banner, {
-            display: "inherit",
-            opacity: 1,
-            delay: 1
-        })
-        // gsap.to(cross, {
-        //     display: "none",
-        //     opacity: 0
 
 
-    // })
-
-}
+    click = true
 
 
-
-
-
-window.addEventListener('resize', () => {
-    // Update sizes
-    sizes.width = sizes.width
-    sizes.height = window.innerHeight
-
-    // Update camera
-    camera.aspect = sizes.width / sizes.height
-    camera.updateProjectionMatrix()
-
-    // Update renderer
-    renderer.setSize(sizes.width, sizes.height)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 })
+
+cross.addEventListener('click', (event) => {
+
+    sizes.width = window.innerWidth / 2,
+        gsap.to(cross, {
+            display: "none",
+            opacity: 0,
+
+        })
+    gsap.to(banner, {
+        display: "inherit",
+        opacity: 1,
+        delay: 1
+    })
+    click = false
+
+
+
+
+})
+
+
+
 
 /**
  * Camera
  */
 // Base camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
-camera.position.set(0, 0, 1)
+camera.position.x = 0
+camera.position.y = 0
+camera.position.z = 1
+
+
+
+left.addEventListener("click", () => {
+    let x = camera.position.x
+    gsap.to(camera.position, {
+        x: x - 5,
+        duration: 3,
+        ease: 'ease.out'
+    })
+});
+
+right.addEventListener("click", () => {
+    let x = camera.position.x
+
+    gsap.to(camera.position, {
+        x: x + 5,
+        duration: 3,
+        ease: 'power4.in.out'
+    })
+});
+
+
 scene.add(camera)
 
 
@@ -324,17 +353,101 @@ const clock = new THREE.Clock()
 const tick = () => {
     const elapsedTime = clock.getElapsedTime()
 
+    if (t1) {
 
-    if (model) {
-
-        gsap.to(model.rotation, {
+        gsap.to(t1.rotation, {
             x: cursor.y / sizes.height - 0.5,
-            y: cursor.x / sizes.width + 0.5,
+            y: cursor.x / sizes.width / 2 + 0.5,
 
         })
+        t1.position.y = Math.sin(elapsedTime) * 0.05
 
 
     }
+    if (t2) {
+
+        gsap.to(t2.rotation, {
+            x: cursor.y / sizes.height - 0.5,
+            y: cursor.x / sizes.width / 2 + 0.5,
+
+        })
+        t2.position.y = Math.sin(elapsedTime) * 0.05
+
+
+    }
+    if (t3) {
+        gsap.to(t3.rotation, {
+            x: cursor.y / sizes.height - 0.5,
+            y: cursor.x / sizes.width / 2 + 0.5,
+        })
+        t3.position.y = Math.sin(elapsedTime) * 0.05
+    }
+    if (t4) {
+        gsap.to(t4.rotation, {
+            x: cursor.y / sizes.height - 0.5,
+            y: cursor.x / sizes.width / 2 + 3.5,
+        })
+        t4.position.y = Math.sin(elapsedTime) * 0.05
+    }
+
+
+    if (camera.position.x == 0) {
+        gsap.to(left, {
+            display: 'none',
+            opacity: 0
+        })
+    } else {
+        gsap.to(left, {
+            display: 'inherit',
+            opacity: 1
+        })
+    }
+    if (camera.position.x == 20) {
+        gsap.to(right, {
+            display: 'none',
+            opacity: 0
+        })
+    } else {
+        gsap.to(right, {
+            display: 'inherit',
+            opacity: 1
+        })
+    }
+
+    if (click) {
+
+
+        window.addEventListener('resize', () => {
+            // Update sizes
+            sizes.width = window.innerWidth
+            sizes.height = window.innerHeight
+
+            // Update camera
+            camera.aspect = sizes.width / sizes.height
+            camera.updateProjectionMatrix()
+
+            // Update renderer
+            renderer.setSize(sizes.width, sizes.height)
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+        })
+    } else(
+        window.addEventListener('resize', () => {
+            // Update sizes
+            sizes.width = window.innerWidth / 2
+            sizes.height = window.innerHeight
+
+            // Update camera
+            camera.aspect = sizes.width / sizes.height
+            camera.updateProjectionMatrix()
+
+            // Update renderer
+            renderer.setSize(sizes.width, sizes.height)
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+        })
+    )
+
+
+
 
     // Update controls
     // controls.update()
