@@ -228,10 +228,17 @@ const sizes = {
 
 
 banner.addEventListener('click', (event) => {
+    gsap.to(webgl, {
+        keyframes: [{
+            width: window.innerWidth / 1,
 
-    gsap.to(sizes, {
-        width: window.innerWidth / 1,
+        }]
     })
+
+
+
+
+
     console.log(sizes.width)
 
 
