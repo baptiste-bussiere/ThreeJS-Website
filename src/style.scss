@@ -37,6 +37,37 @@ main {
     .canvas {
         position: relative;
         display: flex;
+        .loader {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            background-color: #000;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .pulsar {
+                height: 50px;
+                width: 50px;
+                margin: 10px;
+                border-radius: 50%;
+                display: inline-block;
+                position: relative;
+                z-index: 15;
+                background-color: #F55D3E;
+                &::before {
+                    content: '';
+                    background-color: #F55D3E;
+                    height: 50px;
+                    width: 50px;
+                    border-radius: 50%;
+                    position: absolute;
+                    animation: pulse 1s infinite ease-in;
+                }
+            }
+        }
         button {
             position: absolute;
             border: none;
@@ -230,4 +261,15 @@ main {
 
 #left {
     opacity: 0;
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(0.5);
+        opacity: 1;
+    }
+    to {
+        transform: scale(2);
+        opacity: 0;
+    }
 }

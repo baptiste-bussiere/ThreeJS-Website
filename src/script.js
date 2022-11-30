@@ -135,7 +135,15 @@ cur8.addEventListener('mouseout', (event) => {
 })
 
 
+const loaderContainer = document.querySelector('.loader');
+window.addEventListener('load', () => {
 
+    gsap.to(loaderContainer, {
+        opacity: 0,
+        display: "none"
+    })
+
+});
 window.addEventListener('mousemove', (event) => {
     cursor.x = event.clientX - innerWidth
     cursor.y = event.clientY
