@@ -45,6 +45,8 @@ Projet utilisant Webpack
 
 ![App Screenshot](https://github.com/baptiste-bussiere/ThreeJS-Website/blob/main/screenshots/2.png)
 
+
+![App Screenshot](https://github.com/baptiste-bussiere/ThreeJS-Website/blob/main/screenshots/3.png)
 ## Credits & Modeles utilisé
 
 - https://sketchfab.com/3d-models/paul-gauguin-vairaumati-tei-oa-49209336ef6b4dd8965f26c35edc6b6c
