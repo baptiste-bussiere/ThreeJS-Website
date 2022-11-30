@@ -30,6 +30,7 @@ main {
         position: absolute;
         pointer-events: none;
         opacity: 0;
+        z-index: 20;
         img {
             width: 13em;
         }
