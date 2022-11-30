@@ -40,7 +40,7 @@ Projet utilisant Webpack
 
 
 ## Screenshot
-![App Screenshot](https://raw.githubusercontent.com/baptiste-bussiere/ThreeJS-Explorer/main/screenshots/planet.png?token=GHSAT0AAAAAABYVFJ32LOCXYWJJPH73RZDEY4CJ3UA)
+![App Screenshot](https://github.com/baptiste-bussiere/ThreeJS-Website/blob/main/screenshots/1.png)
 
 
 ![App Screenshot](https://raw.githubusercontent.com/baptiste-bussiere/ThreeJS-Explorer/main/screenshots/paris.png?token=GHSAT0AAAAAABYVFJ335AENERHS3BUA7EIKY4CJ3FA)
