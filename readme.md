@@ -43,7 +43,7 @@ Projet utilisant Webpack
 ![App Screenshot](https://github.com/baptiste-bussiere/ThreeJS-Website/blob/main/screenshots/1.png)
 
 
-![App Screenshot](https://raw.githubusercontent.com/baptiste-bussiere/ThreeJS-Explorer/main/screenshots/paris.png?token=GHSAT0AAAAAABYVFJ335AENERHS3BUA7EIKY4CJ3FA)
+![App Screenshot](https://github.com/baptiste-bussiere/ThreeJS-Website/blob/main/screenshots/2.png)
 
 ## Credits & Modeles utilisé
 
